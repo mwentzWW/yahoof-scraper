@@ -16,10 +16,11 @@ def parse(ticker):
     parser = html.fromstring(response.text)
     summary_table = parser.xpath('//div[contains(@data-test,"summary-table")]//tr')
     summary_data = OrderedDict()
-    other_details_json_link = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/{0}?formatted=true&lang=en-US&region=US&modules=summaryProfile%2CfinancialData%2CrecommendationTrend%2CupgradeDowngradeHistory%2Cearnings%2CdefaultKeyStatistics%2CcalendarEvents&corsDomain=finance.yahoo.com".format(
-        ticker)
-    summary_json_response = requests.get(other_details_json_link)
+    other_details_json_link = "https://query2.finance.yahoo.com/v10/finance/quoteSummary/{0}?formatted=true&lang=\
+        en-US&region=US&modules=summaryProfile%2CfinancialData%2CrecommendationTrend%2CupgradeDowngradeHistory%2\
+        Cearnings%2CdefaultKeyStatistics%2CcalendarEvents&corsDomain=finance.yahoo.com".format(ticker)
 
+    summary_json_response = requests.get(other_details_json_link)
 
     master_table = pd.DataFrame()
 
